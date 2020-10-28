@@ -8,10 +8,11 @@
   one:
     build:
       executor: win/default     
-      working_directory: ~/server/tests
+      working_directory: ~/server
       steps:
         - checkout
         - run: dotnet build
+        - run: dotnet test ./tests
   two:
     build:
       executor: node/default
