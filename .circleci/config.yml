@@ -8,8 +8,7 @@ jobs:
     executor: win/default     
     steps:
       - checkout
-      - run:
-        command: |
+      - run: |
           cd server
           dotnet build
           dotnet test ./tests
@@ -17,8 +16,7 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - run: 
-        command: |
+      - run: |
           cd hr-app-frontend
           npm install
           npm test
