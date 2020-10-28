@@ -14,13 +14,14 @@ namespace HRApp.API.Controllers
         [HttpGet]
         public ActionResult<string> Get()
         {
-            return "This is the home page!";
+            return "This is the home page! Isn't it great!";
         }
 
-        // [HttpPost]
-        // public ActionResult<string> Post([FromBody] string value)
-        // {
-        //     return "post";
+        // POST api/home
+        [HttpPost]
+        public ActionResult<string> Post()
+        {
+            return "Hello there";
         }
 
         // // GET api/values/5
