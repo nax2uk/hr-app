@@ -1,6 +1,5 @@
- version: 2.1
-
- orbs:
+version: 2.1
+orbs:
   win: circleci/windows@2.2.0
   node: circleci/node@4.1.0
 
@@ -21,7 +20,7 @@ jobs:
         - checkout
         - run: npm install
         - run: npm test
-        
+
 workflows:
   version: 2.1
   one_and_two: # this is the name of our workflow
