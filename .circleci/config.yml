@@ -5,21 +5,19 @@ orbs:
 
 jobs:
   one:
-    build:
-      executor: win/default     
-      working_directory: ~/server
-      steps:
-        - checkout
-        - run: dotnet build
-        - run: dotnet test ./tests
+    executor: win/default     
+    working_directory: ~/server
+    steps:
+      - checkout
+      - run: dotnet build
+      - run: dotnet test ./tests
   two:
-    build:
-      executor: node/default
-      working_directory: ~/hr-app-frontend
-      steps:
-        - checkout
-        - run: npm install
-        - run: npm test
+    executor: node/default
+    working_directory: ~/hr-app-frontend
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
 
 workflows:
   version: 2.1
