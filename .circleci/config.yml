@@ -6,16 +6,16 @@ orbs:
 jobs:
   one:
     executor: win/default     
-    working_directory: ~/project/server
     steps:
       - checkout
+      - run: cd server
       - run: dotnet build
       - run: dotnet test ./tests
   two:
     executor: node/default
-    working_directory: ~/project/hr-app-frontend
     steps:
       - checkout
+      - run: cd hr-app-frontend
       - run: npm install
       - run: npm test
 
