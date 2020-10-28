@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   win: circleci/windows@2.2.0
   node: circleci/node@4.1.0
+  heroku: circleci/heroku@0.0.10
 
 jobs:
   server:
@@ -24,7 +25,16 @@ jobs:
 
 workflows:
   version: 2.1
-  one_and_two: # this is the name of our workflow
+  server_and_hr_app_frontend: # this is the name of our workflow
     jobs: # and here we list the jobs we are going to run.
       - server
       - hr-app-frontend
+  heroku_deploy:
+    jobs:
+      - build
+      - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
+          requires:
+            - build
+          filters:
+            branches:
+              only: sequential-branch-filter
