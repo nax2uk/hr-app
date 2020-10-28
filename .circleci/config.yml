@@ -2,11 +2,29 @@
 
  orbs:
   win: circleci/windows@2.2.0
+  node: circleci/node@4.1.0
 
  jobs:
-   build:
-     executor: win/default     
-    
-     steps:
-       - checkout
-       - run: dotnet build
+  one:
+    build:
+      executor: win/default     
+      working_directory: ~/server
+      steps:
+        - checkout
+        - run: dotnet build
+        - run: dotnet test ./tests
+  two:
+    build:
+      executor: node/default
+      working_directory: ~/hr-app-frontend
+      steps:
+        - checkout
+        - run: npm install
+        - run: npm test
+
+workflows:
+  version: 2.1
+  one_and_two: # this is the name of our workflow
+    jobs: # and here we list the jobs we are going to run.
+      - one
+      - two
