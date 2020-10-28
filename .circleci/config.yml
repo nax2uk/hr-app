@@ -8,10 +8,11 @@ jobs:
     executor: win/default     
     steps:
       - checkout
-      - run: |
-          cd server
-          dotnet build
-          dotnet test ./tests
+      - run: dotnet build server/api
+      - run:
+          command: dotnet run --project  ./server/api
+          background: true
+      - run: dotnet test ./server/tests
   two:
     executor: node/default
     steps:
