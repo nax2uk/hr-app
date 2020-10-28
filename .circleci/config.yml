@@ -8,16 +8,20 @@ jobs:
     executor: win/default     
     steps:
       - checkout
-      - run: cd server
-      - run: dotnet build
-      - run: dotnet test ./tests
+      - run:
+        command: |
+          cd server
+          dotnet build
+          dotnet test ./tests
   two:
     executor: node/default
     steps:
       - checkout
-      - run: cd hr-app-frontend
-      - run: npm install
-      - run: npm test
+      - run: 
+        command: |
+          cd hr-app-frontend
+          npm install
+          npm test
 
 workflows:
   version: 2.1
