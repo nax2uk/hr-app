@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
+import Login from './Login';
+import '../style/App.css';
 
 function App() {
   return (
     <div className="app">
-      HR-App
+      <Login />
     </div>
   );
 }
